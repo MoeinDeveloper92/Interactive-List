@@ -30,6 +30,16 @@ function addNewUser(userName) {
     span2.textContent = 'Edit'
     const span3 = createMyElement(div, 'span', 'del')
     span3.textContent = "Delete";
+
+    span2.addEventListener('click', e => {
+        console.log('You have clicked Edit button')
+    })
+
+
+    span3.addEventListener('click', e => {
+        console.log('You have clicked on Delete button')
+    })
+
     return li
 }
 

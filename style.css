@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-
 }
 
 .info {
@@ -8,12 +7,34 @@
 
 }
 
+.container {
+    margin-top: 40px;
+    display: flex;
+    max-width: 200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .editer {
     background-color: greenyellow;
     max-width: 50px;
+    padding: 5px;
+    color: black;
+    font-weight: 300;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
 }
 
 .del {
     background-color: red;
     max-width: 50px;
+    padding: 5px;
+    color: black;
+    font-weight: 300;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
 }
