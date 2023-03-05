@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+
+}
+
+.info {
+    padding: 5px;
+
+}
+
+.editer {
+    background-color: greenyellow;
+    max-width: 50px;
+}
+
+.del {
+    background-color: red;
+    max-width: 50px;
+}
