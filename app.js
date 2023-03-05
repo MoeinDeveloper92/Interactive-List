@@ -7,8 +7,26 @@ myBtn.textContent = "Add New User"
 myBtn.style.cursor = 'pointer'
 const myList = createMyElement(output, 'ul', 'myList')
 
+// bewlo I Want to add Lcoalstorage to add Items 
+// If I refresh the browser the list will be there
+// I need to have an object to store the list
+const curList = [];
+let getData = window.localStorage.getItem('curList')
 
-addNewUser("Nilofar")
+// the object bellow acts like useEffect hook in React
+window.addEventListener('DOMContentLoaded', e => {
+    if (getData) {
+        // in order to make it usable format I need to use JSON.parse()
+        const tempArr = JSON.parse(getData)
+        tempArr.forEach((user) => {
+            addNewUser(user)
+        })
+    }
+})
+
+
+
+
 
 myBtn.addEventListener('click', e => {
     console.log('Click')
@@ -21,7 +39,20 @@ myBtn.addEventListener('click', e => {
 })
 
 
+function updater() {
+    const myListItems = document.querySelectorAll('.info')
+    curList.length = 0;
+    myListItems.forEach((el) => {
+        curList.push(el.textContent);
+    })
+
+    window.localStorage.setItem('curList', JSON.stringify(curList))
+}
+
+
 function addNewUser(userName) {
+    curList.push(userName)
+    updater();
     const li = createMyElement(myList, 'li', 'myList')
     const div = createMyElement(li, 'div', 'container')
     const span1 = createMyElement(div, 'span', 'info')
@@ -32,12 +63,22 @@ function addNewUser(userName) {
     span3.textContent = "Delete";
 
     span2.addEventListener('click', e => {
-        console.log('You have clicked Edit button')
+        if (span2.textContent === "Edit") {
+            span2.textContent = "Save"
+            span1.setAttribute('contenteditable', 'true')
+            span1.style.backgroundColor = 'yellow'
+        } else if (span2.textContent === "Save") {
+            span2.textContent = "Edit"
+            span1.setAttribute('contenteditable', 'false')
+            span1.style.backgroundColor = 'white'
+            updater()
+        }
     })
 
 
     span3.addEventListener('click', e => {
-        console.log('You have clicked on Delete button')
+        li.remove();
+        updater()
     })
 
     return li
