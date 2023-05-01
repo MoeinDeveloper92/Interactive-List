@@ -45,7 +45,7 @@ function updater() {
     myListItems.forEach((el) => {
         curList.push(el.textContent);
     })
-
+// when we want to add item to the server or any other storage, we need to trun that item into string by JSON.stringify()
     window.localStorage.setItem('curList', JSON.stringify(curList))
 }
 
